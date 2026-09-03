@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>ExamBuddy — Study Smart. Ace Exams. | GGU Student Exam Preparation App</title>
+  <meta name="title" content="ExamBuddy — Study Smart. Ace Exams. | GGU Student Exam Preparation App">
+  <meta name="description" content="ExamBuddy is a student-focused exam preparation app designed exclusively for Guru Ghasidas Vishwavidyalaya (GGU) students. Access Syllabus, PYQs, Notes, Notices, Results, CGPA Calculator, and Attendance Tracker in one pocket app.">
+  <meta name="keywords" content="ExamBuddy, GGU, Guru Ghasidas Vishwavidyalaya, GGU Syllabus, GGU PYQs, GGU Notes, GGU Results, GGU Bilaspur, CGPA Calculator GGU, Attendance Tracker, GGU Exam Prep">
+  <meta name="author" content="ExamBuddy Team">
+  <link rel="canonical" href="https://exambuddy.onrender.com/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://exambuddy.onrender.com/">
+  <meta property="og:title" content="ExamBuddy — Study Smart. Ace Exams.">
+  <meta property="og:description" content="A student-focused exam preparation app for Guru Ghasidas Vishwavidyalaya (GGU) students. Syllabus, PYQs, Notes, CGPA Calculator & more.">
+  <meta property="og:image" content="asset/logo.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://exambuddy.onrender.com/">
+  <meta property="twitter:title" content="ExamBuddy — Study Smart. Ace Exams.">
+  <meta property="twitter:description" content="A student-focused exam preparation app for Guru Ghasidas Vishwavidyalaya (GGU) students.">
+  <meta property="twitter:image" content="asset/logo.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="asset/logo.png">
+  <link rel="apple-touch-icon" href="asset/logo.png">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="asset/styles.css">
+</head>
+<body>
+
+  <!-- Ambient Glowing Background Effect -->
+  <div class="bg-glow-container" aria-hidden="true">
+    <div class="glow-orb glow-1"></div>
+    <div class="glow-orb glow-2"></div>
+    <div class="glow-orb glow-3"></div>
+  </div>
+
+  <!-- Site Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#home" class="brand-logo" id="brandLogo">
+        <img src="asset/logo.png" alt="ExamBuddy Logo" class="logo-img">
+        <span class="logo-text">Exam<span>Buddy</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#features" class="nav-link">Features</a></li>
+          <li><a href="#tools" class="nav-link">CGPA & Tools</a></li>
+          <li><a href="#support" class="nav-link">Support & FAQ</a></li>
+          <li><a href="privacy-policy.html" class="nav-link">Privacy Policy</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-cta-group">
+        <button type="button" class="btn btn-primary btn-open-download" id="navDownloadBtn">
+          <span>⚡ Get App</span>
+        </button>
+        <button type="button" class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. HERO SECTION (Home) -->
+  <main>
+    <section class="hero-section" id="home">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <div class="hero-content">
+            <div class="hero-tag">
+              <span class="pulse-dot"></span>
+              <span>For Guru Ghasidas Vishwavidyalaya (GGU)</span>
+            </div>
+
+            <h1 class="hero-title">
+              ExamBuddy — <br>
+              <span class="gradient-text">Study Smart.</span> <br>
+              <span class="gradient-text-alt">Ace Exams.</span>
+            </h1>
+
+            <p class="hero-subtitle">
+              A student-focused exam preparation app for GGU students. Get verified syllabus, previous year papers (PYQs), topper notes, instant circulars, and grade calculators — right in your pocket.
+            </p>
+
+            <div class="hero-cta-bar">
+              <button type="button" class="btn btn-primary btn-open-download" id="heroDownloadBtn">
+                <span>📲 Download ExamBuddy</span>
+              </button>
+              <a href="#tools" class="btn btn-secondary" id="heroTryCalcBtn">
+                <span>🧮 Try CGPA Calculator</span>
+              </a>
+            </div>
+
+            <div class="hero-stats">
+              <div class="stat-item">
+                <h3><span>8+</span> Schools</h3>
+                <p>Engineering, Science, Law & more</p>
+              </div>
+              <div class="stat-item">
+                <h3><span>100%</span> Free</h3>
+                <p>Curated by GGU students & alumni</p>
+              </div>
+              <div class="stat-item">
+                <h3><span>1st-8th</span> Sem</h3>
+                <p>Complete semester-wise coverage</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Visual / App Mockup Preview -->
+          <div class="hero-visual">
+            <div class="phone-mockup">
+              <div class="phone-screen">
+                <div class="mockup-header">
+                  <div class="mockup-brand">
+                    <img src="asset/logo.png" alt="ExamBuddy App">
+                    <span>ExamBuddy GGU</span>
+                  </div>
+                  <span style="font-size: 0.75rem; color: #10B981;">● Online</span>
+                </div>
+                <div class="mockup-body">
+                  <div class="mockup-banner">
+                    <h4>📚 Mid-Sem & End-Sem Prep</h4>
+                    <p>All GGU departments & CBCS syllabus updated.</p>
+                  </div>
+                  <div class="mockup-card-grid">
+                    <div class="m-tile">
+                      <span class="icon">📚</span>
+                      <span>Syllabus</span>
+                    </div>
+                    <div class="m-tile">
+                      <span class="icon">📝</span>
+                      <span>PYQs</span>
+                    </div>
+                    <div class="m-tile">
+                      <span class="icon">📖</span>
+                      <span>Notes</span>
+                    </div>
+                    <div class="m-tile">
+                      <span class="icon">🔔</span>
+                      <span>Notices</span>
+                    </div>
+                    <div class="m-tile">
+                      <span class="icon">🧮</span>
+                      <span>CGPA Calc</span>
+                    </div>
+                    <div class="m-tile">
+                      <span class="icon">✅</span>
+                      <span>Attendance</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Micro Badges -->
+            <div class="floating-card card-left">
+              <div class="f-icon blue">📝</div>
+              <div class="f-text">
+                <h5>5+ Years PYQs</h5>
+                <p>Original GGU Papers</p>
+              </div>
+            </div>
+
+            <div class="floating-card card-right">
+              <div class="f-icon green">✅</div>
+              <div class="f-text">
+                <h5>75% Safe Attendance</h5>
+                <p>Smart Bunk Predictor</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ABOUT EXAMBUDDY SECTION -->
+    <section class="section-wrapper" id="about">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge-tag">About ExamBuddy</div>
+          <h2 class="section-title">Built by Students, <span class="gradient-text">For GGU Students</span></h2>
+          <p class="section-desc">
+            Everything you need to navigate your semesters at Guru Ghasidas Vishwavidyalaya (A Central University, Bilaspur) without the chaos.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Card 1: ExamBuddy Kya Hai -->
+          <div class="glass-card about-card">
+            <div>
+              <h3><span>💡</span> ExamBuddy Kya Hai?</h3>
+              <p>
+                <strong>ExamBuddy</strong> ek dedicated, student-centric academic platform hai jo Guru Ghasidas Vishwavidyalaya (GGU) ke har student ke exam preparation ko aasan aur organized banane ke liye design kiya gaya hai.
+              </p>
+              <p>
+                Chahe aap 1st year freshers hon ya final year graduating student, ExamBuddy aapko authentic academic materials, real-time university notifications aur smart grading tools single tap par provide karta hai.
+              </p>
+            </div>
+            <ul class="solution-list">
+              <li><span class="bullet">✓</span> 100% GGU Syllabus & Grading Ordinance alignment</li>
+              <li><span class="bullet">✓</span> Clean, ad-friendly UI built for fast revision</li>
+              <li><span class="bullet">✓</span> Regular updates from verified class representatives and toppers</li>
+            </ul>
+          </div>
+
+          <!-- Card 2: Problems Solved -->
+          <div class="glass-card about-card">
+            <div>
+              <h3><span>🎯</span> GGU Students Ke Liye Kya Solve Karta Hai?</h3>
+              <p>
+                University life mein study materials aur crucial updates dhoondhna sabse badi headache hoti hai. ExamBuddy in sabhi pain-points ko जड़ se khatam karta hai:
+              </p>
+              <ul class="problem-list">
+                <li><span class="bullet">✕</span> <strong>Scattered Study Material:</strong> WhatsApp & Telegram groups mein notes kho jaane ka jhanjhat khatam.</li>
+                <li><span class="bullet">✕</span> <strong>Missing Official Circulars:</strong> Exam date-sheets, re-evaluation aur fee circulars miss hone ka dar nahi.</li>
+                <li><span class="bullet">✕</span> <strong>Outdated Question Papers:</strong> Photocopier shop par line lagaye bina authentic PYQs download karein.</li>
+                <li><span class="bullet">✕</span> <strong>Attendance Shortage Surprise:</strong> 75% rule ki tension ko real-time attendance calculator se control karein.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Department & Semester Coverage Showcase -->
+        <div class="dept-showcase">
+          <div class="section-header" style="margin-bottom: 30px;">
+            <h3 style="font-size: 1.5rem;">Department & Semester-wise Coverage</h3>
+            <p class="section-desc" style="font-size: 0.95rem;">Curated resources across all prominent Schools of Studies at GGU</p>
+          </div>
+
+          <div class="dept-grid">
+            <div class="dept-pill">
+              <div class="dept-icon">⚙️</div>
+              <div class="dept-info">
+                <h4>SoS Engineering & Tech</h4>
+                <p>CSE, IT, ECE, Mech, Civil, Chem, IPE (Sem 1-8)</p>
+              </div>
+            </div>
+
+            <div class="dept-pill">
+              <div class="dept-icon">🧪</div>
+              <div class="dept-info">
+                <h4>SoS Physical Sciences</h4>
+                <p>Physics, Chemistry, Maths, CS (UG & PG)</p>
+              </div>
+            </div>
+
+            <div class="dept-pill">
+              <div class="dept-icon">📈</div>
+              <div class="dept-info">
+                <h4>Commerce & Management</h4>
+                <p>B.Com (Hons), M.Com, MBA (All Semesters)</p>
+              </div>
+            </div>
+
+            <div class="dept-pill">
+              <div class="dept-icon">⚖️</div>
+              <div class="dept-info">
+                <h4>School of Law</h4>
+                <p>B.A. LL.B., B.Com. LL.B., LL.M. Papers</p>
+              </div>
+            </div>
+
+            <div class="dept-pill">
+              <div class="dept-icon">💊</div>
+              <div class="dept-info">
+                <h4>Pharmacy Sciences</h4>
+                <p>B.Pharm, M.Pharm Core Subject Notes</p>
+              </div>
+            </div>
+
+            <div class="dept-pill">
+              <div class="dept-icon">🌿</div>
+              <div class="dept-info">
+                <h4>SoS Life Sciences</h4>
+                <p>Biotech, Botany, Zoology, Forestry</p>
+              </div>
+            </div>
+
+            <div class="dept-pill">
+              <div class="dept-icon">🎨</div>
+              <div class="dept-info">
+                <h4>Arts & Social Sciences</h4>
+                <p>Economics, Political Sci, History, English</p>
+              </div>
+            </div>
+
+            <div class="dept-pill">
+              <div class="dept-icon">🎓</div>
+              <div class="dept-info">
+                <h4>School of Education</h4>
+                <p>B.Ed, M.Ed & Ph.D. Coursework Guides</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. FEATURES SECTION -->
+    <section class="section-wrapper" id="features" style="background: rgba(14, 22, 38, 0.4);">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge-tag emerald">9 Core Pillars</div>
+          <h2 class="section-title">Everything Needed to <span class="gradient-text">Score High</span></h2>
+          <p class="section-desc">
+            Explore the powerful feature suite built specifically for university-level coursework, internal assessments, and end-semester examinations.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          
+          <!-- Feature 1: Syllabus -->
+          <div class="feature-box" id="feat-syllabus">
+            <div class="feat-header">
+              <div class="feat-icon-wrapper">📚</div>
+              <span class="feat-badge">CBCS & NEP 2020</span>
+            </div>
+            <h3>Syllabus</h3>
+            <p>
+              Complete, updated university syllabus for all branches and semesters. Get unit-wise breakdowns, course outcomes (COs), and recommended textbook references.
+            </p>
+            <ul class="feat-highlights">
+              <li><span>✓</span> Department-wise PDF view & download</li>
+              <li><span>✓</span> Marks distribution & credit structure</li>
+            </ul>
+          </div>
+
+          <!-- Feature 2: PYQs -->
+          <div class="feature-box" id="feat-pyqs">
+            <div class="feat-header">
+              <div class="feat-icon-wrapper">📝</div>
+              <span class="feat-badge">Previous 5-10 Years</span>
+            </div>
+            <h3>Previous Year Questions (PYQs)</h3>
+            <p>
+              Original mid-sem and end-sem question papers. Master the pattern, identify repeating high-weightage questions, and practice realistic mock runs.
+            </p>
+            <ul class="feat-highlights">
+              <li><span>✓</span> Filter by Year, Semester & Subject</li>
+              <li><span>✓</span> Includes Solved Model Answers</li>
+            </ul>
+          </div>
+
+          <!-- Feature 3: Notes -->
+          <div class="feature-box" id="feat-notes">
+            <div class="feat-header">
+              <div class="feat-icon-wrapper">📖</div>
+              <span class="feat-badge">High Yield</span>
+            </div>
+            <h3>Study Notes & Handouts</h3>
+            <p>
+              Verified handwritten notes, crisp unit summaries, and formula cheat sheets prepared by top scorers and professors for rapid last-minute revision.
+            </p>
+            <ul class="feat-highlights">
+              <li><span>✓</span> Diagrammatic explanations & key pointers</li>
+              <li><span>✓</span> Available offline in mobile app cache</li>
+            </ul>
+          </div>
+
+          <!-- Feature 4: Notices -->
+          <div class="feature-box" id="feat-notices">
+            <div class="feat-header">
+              <div class="feat-icon-wrapper">🔔</div>
+              <span class="feat-badge">Instant Push</span>
+            </div>
+            <h3>Official University Notices</h3>
+            <p>
+              Instant alerts for exam time-tables, re-evaluation dates, enrollment forms, fee submission deadlines, and official administrative announcements.
+            </p>
+            <ul class="feat-highlights">
+              <li><span>✓</span> Direct sync with university notifications</li>
+              <li><span>✓</span> Categorized by Exam, General & Holiday</li>
+            </ul>
+          </div>
+
+          <!-- Feature 5: Results -->
+          <div class="feature-box" id="feat-results">
+            <div class="feat-header">
+              <div class="feat-icon-wrapper">📊</div>
+              <span class="feat-badge">Roll No. Lookup</span>
+            </div>
+            <h3>Results & Marksheets</h3>
+            <p>
+              Fast and direct access to semester results, SGPA scorecards, grade cards, and historical backlog clearance records without server delays.
+            </p>
+            <ul class="feat-highlights">
+              <li><span>✓</span> Instant roll number result search</li>
+              <li><span>✓</span> Semester-over-semester grade progress</li>
+            </ul>
+          </div>
+
+          <!-- Feature 6: Academic Calendar -->
+          <div class="feature-box" id="feat-calendar">
+            <div class="feat-header">
+              <div class="feat-icon-wrapper">📅</div>
+              <span class="feat-badge">Session Timetable</span>
+            </div>
+            <h3>Academic Calendar</h3>
+            <p>
+              Official GGU session timeline with exam commencement dates, mid-term assessment slots, summer/winter breaks, and gazetted university holidays.
+            </p>
+            <ul class="feat-highlights">
+              <li><span>✓</span> Exam countdown timer widget</li>
+              <li><span>✓</span> Never miss an assessment submission</li>
+            </ul>
+          </div>
+
+          <!-- Feature 7: Attendance -->
+          <div class="feature-box" id="feat-attendance">
+            <div class="feat-header">
+              <div class="feat-icon-wrapper">✅</div>
+              <span class="feat-badge">75% Criteria</span>
+            </div>
+            <h3>Attendance Tracker</h3>
+            <p>
+              Keep your attendance above the mandatory 75% threshold. Calculate safe bunk counts and predict how many classes you must attend to stay safe.
+            </p>
+            <ul class="feat-highlights">
+              <li><span>✓</span> Subject-wise attendance percentage</li>
+              <li><span>✓</span> Smart bunk & recovery simulator</li>
+            </ul>
+          </div>
+
+          <!-- Feature 8: CGPA Calculator -->
+          <div class="feature-box" id="feat-cgpa">
+            <div class="feat-header">
+              <div class="feat-icon-wrapper">🧮</div>
+              <span class="feat-badge">10-Point Scale</span>
+            </div>
+            <h3>CGPA / SGPA Calculator</h3>
+            <p>
+              Tailored for GGU's standard 10-point CBCS grading system (O, A+, A, B+, B, C, P, F). Calculate semester SGPA and cumulative CGPA instantly.
+            </p>
+            <ul class="feat-highlights">
+              <li><span>✓</span> Credit weightage calculation</li>
+              <li><span>✓</span> Target grade simulator for next semester</li>
+            </ul>
+          </div>
+
+          <!-- Feature 9: Video Solutions -->
+          <div class="feature-box" id="feat-videos">
+            <div class="feat-header">
+              <div class="feat-icon-wrapper">🎥</div>
+              <span class="feat-badge">Concept Playlists</span>
+            </div>
+            <h3>Video Solutions & Lectures</h3>
+            <p>
+              Curated topic-wise video lectures and step-by-step problem-solving tutorials covering tough mathematics, engineering mechanics, programming, and sciences.
+            </p>
+            <ul class="feat-highlights">
+              <li><span>✓</span> Unit-by-unit structured video playlists</li>
+              <li><span>✓</span> Important numerical solutions</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. INTERACTIVE TOOLS SECTION (CGPA Calculator & Attendance Simulator) -->
+    <section class="section-wrapper" id="tools">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge-tag amber">Interactive Tools</div>
+          <h2 class="section-title">Calculate SGPA & <span class="gradient-text">Track Attendance</span></h2>
+          <p class="section-desc">
+            Try the real-time GGU 10-point scale grade calculator and attendance simulator right here on the web!
+          </p>
+        </div>
+
+        <div class="tools-grid">
+          
+          <!-- Interactive Tool 1: CGPA / SGPA Calculator -->
+          <div class="glass-card calculator-card">
+            <div class="calc-header">
+              <h3><span>🧮</span> GGU SGPA Calculator (CBCS)</h3>
+              <span class="badge-tag" style="margin-bottom: 0;">10-Point Scale</span>
+            </div>
+
+            <div class="subject-table-container">
+              <table class="subject-table">
+                <thead>
+                  <tr>
+                    <th>Subject Name</th>
+                    <th>Credits</th>
+                    <th>Grade</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="subjectTableBody">
+                  <tr>
+                    <td><input type="text" class="input-control" value="Subject 1"></td>
+                    <td>
+                      <select class="input-control subject-credit">
+                        <option value="4" selected>4 Credits</option>
+                        <option value="3">3 Credits</option>
+                        <option value="2">2 Credits (Lab)</option>
+                        <option value="1">1 Credit</option>
+                        <option value="5">5 Credits</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="input-control subject-grade">
+                        <option value="O">O (10 - Outstanding)</option>
+                        <option value="A+" selected>A+ (9 - Excellent)</option>
+                        <option value="A">A (8 - Very Good)</option>
+                        <option value="B+">B+ (7 - Good)</option>
+                        <option value="B">B (6 - Above Avg)</option>
+                        <option value="C">C (5 - Average)</option>
+                        <option value="P">P (4 - Pass)</option>
+                        <option value="F">F (0 - Fail)</option>
+                      </select>
+                    </td>
+                    <td><button type="button" class="btn-remove-row">✕</button></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" class="input-control" value="Subject 2"></td>
+                    <td>
+                      <select class="input-control subject-credit">
+                        <option value="4" selected>4 Credits</option>
+                        <option value="3">3 Credits</option>
+                        <option value="2">2 Credits (Lab)</option>
+                        <option value="1">1 Credit</option>
+                        <option value="5">5 Credits</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="input-control subject-grade">
+                        <option value="O">O (10 - Outstanding)</option>
+                        <option value="A+">A+ (9 - Excellent)</option>
+                        <option value="A" selected>A (8 - Very Good)</option>
+                        <option value="B+">B+ (7 - Good)</option>
+                        <option value="B">B (6 - Above Avg)</option>
+                        <option value="C">C (5 - Average)</option>
+                        <option value="P">P (4 - Pass)</option>
+                        <option value="F">F (0 - Fail)</option>
+                      </select>
+                    </td>
+                    <td><button type="button" class="btn-remove-row">✕</button></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" class="input-control" value="Subject 3"></td>
+                    <td>
+                      <select class="input-control subject-credit">
+                        <option value="4">4 Credits</option>
+                        <option value="3" selected>3 Credits</option>
+                        <option value="2">2 Credits (Lab)</option>
+                        <option value="1">1 Credit</option>
+                        <option value="5">5 Credits</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="input-control subject-grade">
+                        <option value="O" selected>O (10 - Outstanding)</option>
+                        <option value="A+">A+ (9 - Excellent)</option>
+                        <option value="A">A (8 - Very Good)</option>
+                        <option value="B+">B+ (7 - Good)</option>
+                        <option value="B">B (6 - Above Avg)</option>
+                        <option value="C">C (5 - Average)</option>
+                        <option value="P">P (4 - Pass)</option>
+                        <option value="F">F (0 - Fail)</option>
+                      </select>
+                    </td>
+                    <td><button type="button" class="btn-remove-row">✕</button></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" class="input-control" value="Practical / Lab"></td>
+                    <td>
+                      <select class="input-control subject-credit">
+                        <option value="4">4 Credits</option>
+                        <option value="3">3 Credits</option>
+                        <option value="2" selected>2 Credits (Lab)</option>
+                        <option value="1">1 Credit</option>
+                        <option value="5">5 Credits</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="input-control subject-grade">
+                        <option value="O" selected>O (10 - Outstanding)</option>
+                        <option value="A+">A+ (9 - Excellent)</option>
+                        <option value="A">A (8 - Very Good)</option>
+                        <option value="B+">B+ (7 - Good)</option>
+                        <option value="B">B (6 - Above Avg)</option>
+                        <option value="C">C (5 - Average)</option>
+                        <option value="P">P (4 - Pass)</option>
+                        <option value="F">F (0 - Fail)</option>
+                      </select>
+                    </td>
+                    <td><button type="button" class="btn-remove-row">✕</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="calc-actions">
+              <button type="button" class="btn btn-secondary" id="addSubjectBtn">
+                <span>➕ Add Subject</span>
+              </button>
+              <div style="display: flex; gap: 10px;">
+                <button type="button" class="btn btn-primary" id="calculateSgpaBtn">
+                  <span>Calculate SGPA</span>
+                </button>
+                <button type="button" class="btn btn-secondary" id="resetCalcBtn">
+                  <span>Reset</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="calc-result-box">
+              <div>
+                <span style="font-size: 0.88rem; color: var(--text-muted); text-transform: uppercase;">Calculated SGPA</span>
+                <div class="result-val"><span id="sgpaResult">9.08</span> / 10.0</div>
+              </div>
+              <div style="text-align: right;">
+                <span style="font-size: 0.88rem; color: var(--text-muted);">Total Credits</span>
+                <h4 id="totalCreditsDisplay" style="color: #FFFFFF; font-size: 1.2rem;">13 Credits</h4>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Tool 2: Attendance 75% Simulator -->
+          <div class="glass-card attendance-widget">
+            <div class="calc-header">
+              <h3><span>✅</span> 75% Attendance Simulator</h3>
+            </div>
+
+            <div class="att-form-group">
+              <label for="totalClasses">Total Classes Conducted</label>
+              <input type="number" id="totalClasses" class="input-control" value="60" min="1">
+            </div>
+
+            <div class="att-form-group">
+              <label for="attendedClasses">Classes Attended by You</label>
+              <input type="number" id="attendedClasses" class="input-control" value="50" min="0">
+            </div>
+
+            <button type="button" class="btn btn-primary" style="width: 100%;" id="calculateAttBtn">
+              <span>Check Attendance Status</span>
+            </button>
+
+            <div class="att-result-display">
+              <div class="att-percentage" id="attPercentDisplay">83.3%</div>
+              <div class="att-status-badge safe" id="attBadge">✓ 75% Safe for GGU Exams</div>
+              <p class="att-advice" id="attAdvice">
+                🎉 You can safely miss <strong>6</strong> upcoming class(es) while staying above 75%.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. SUPPORT / CONTACT & FAQ SECTION -->
+    <section class="section-wrapper" id="support">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge-tag">Help & Support</div>
+          <h2 class="section-title">Need Help? <span class="gradient-text">We've Got You Covered</span></h2>
+          <p class="section-desc">
+            Got questions about ExamBuddy, syllabus updates, notes contribution, or finding specific PYQs? Reach out to our student support team.
+          </p>
+        </div>
+
+        <div class="support-grid">
+          
+          <!-- Contact Form & Support Details -->
+          <div class="support-channels">
+            <div class="glass-card support-card">
+              <h3><span>📬</span> Contact Support</h3>
+              <p>Email us anytime for feature requests, study material uploads, or general queries.</p>
+              
+              <div class="email-box">
+                <span>support@exambuddy.app</span>
+                <button type="button" class="email-copy-btn btn-copy-email" data-email="support@exambuddy.app">
+                  Copy Email
+                </button>
+              </div>
+
+              <form id="contactForm" style="margin-top: 24px; display: flex; flex-direction: column; gap: 14px;">
+                <input type="text" class="input-control" placeholder="Your Name" required>
+                <input type="email" class="input-control" placeholder="Your Email Address" required>
+                <select class="input-control" required>
+                  <option value="" disabled selected>Select Query Type</option>
+                  <option value="notes">Notes / PYQ Request</option>
+                  <option value="bug">Report an App Issue</option>
+                  <option value="contribute">Contribute Study Material</option>
+                  <option value="other">General Feedback</option>
+                </select>
+                <textarea class="input-control" rows="4" placeholder="How can we help you?" required></textarea>
+                <button type="submit" class="btn btn-primary" style="align-self: flex-start;">
+                  <span>Send Message</span>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Basic FAQ Accordion -->
+          <div class="faq-container">
+            <h3 style="font-size: 1.4rem; margin-bottom: 8px; color: #FFFFFF;">Frequently Asked Questions</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;">Common questions asked by GGU students</p>
+
+            <div class="faq-item active">
+              <button type="button" class="faq-question">
+                <span>Is ExamBuddy free for all GGU students?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer" style="max-height: 200px;">
+                <div class="faq-answer-inner">
+                  Yes, 100%! ExamBuddy is built as an open student-first community initiative. All syllabus copies, PYQs, lecture notes, CGPA tools, and academic schedules are completely free to access.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-question">
+                <span>How are previous year question papers (PYQs) verified?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  All question papers uploaded to ExamBuddy are sourced directly from past GGU mid-term and end-term examinations and reviewed by senior students and class toppers before publishing to ensure accurate subject codes and years.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-question">
+                <span>Does the CGPA calculator follow official GGU CBCS ordinance?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Yes. The calculator strictly follows the 10-point grading system (O = 10, A+ = 9, A = 8, B+ = 7, B = 6, C = 5, P = 4, F = 0) with credit-weighted multipliers approved by Guru Ghasidas Vishwavidyalaya.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-question">
+                <span>How can I contribute notes or question papers?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  You can send your clean PDF scans or photographs of question papers and handwritten notes to <strong>support@exambuddy.app</strong> with your department, semester, and subject name. Contributors get verified credits inside the app!
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-question">
+                <span>Is ExamBuddy officially affiliated with Guru Ghasidas Vishwavidyalaya?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  ExamBuddy is an independent, non-official educational resource app developed by student developers and alumni to assist the student community. For official university administration, always refer to <code>ggu.ac.in</code>.
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Download / Get ExamBuddy Modal -->
+  <div class="modal-overlay" id="downloadModal" aria-hidden="true">
+    <div class="modal-content">
+      <button type="button" class="modal-close" id="closeDownloadModal">✕</button>
+      <img src="asset/logo.png" alt="ExamBuddy App" style="width: 64px; height: 64px; margin: 0 auto 12px; border-radius: 14px;">
+      <h3 style="font-size: 1.5rem; margin-bottom: 6px;">Get ExamBuddy App</h3>
+      <p style="color: var(--text-muted); font-size: 0.92rem;">Scan the QR code or click below to install on Android</p>
+      
+      <div class="qr-code-box">
+        <!-- SVG QR Mockup -->
+        <svg viewBox="0 0 100 100" width="100%" height="100%" fill="#0F172A">
+          <rect x="10" y="10" width="24" height="24" fill="#4F46E5"/>
+          <rect x="14" y="14" width="16" height="16" fill="#FFFFFF"/>
+          <rect x="18" y="18" width="8" height="8" fill="#4F46E5"/>
+          
+          <rect x="66" y="10" width="24" height="24" fill="#4F46E5"/>
+          <rect x="70" y="14" width="16" height="16" fill="#FFFFFF"/>
+          <rect x="74" y="18" width="8" height="8" fill="#4F46E5"/>
+
+          <rect x="10" y="66" width="24" height="24" fill="#4F46E5"/>
+          <rect x="14" y="70" width="16" height="16" fill="#FFFFFF"/>
+          <rect x="18" y="74" width="8" height="8" fill="#4F46E5"/>
+
+          <rect x="42" y="14" width="8" height="8" fill="#0F172A"/>
+          <rect x="52" y="24" width="8" height="8" fill="#0F172A"/>
+          <rect x="42" y="42" width="16" height="16" fill="#4F46E5"/>
+          <rect x="66" y="44" width="10" height="8" fill="#0F172A"/>
+          <rect x="44" y="68" width="12" height="12" fill="#0F172A"/>
+          <rect x="68" y="68" width="18" height="18" fill="#4F46E5"/>
+        </svg>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
+        <a href="https://play.google.com/store" target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%;">
+          <span>▶ Get it on Google Play</span>
+        </a>
+        <a href="asset/logo.png" download class="btn btn-secondary" style="width: 100%;">
+          <span>Direct APK Download (v2.4)</span>
+        </a>
+      </div>
+      <span style="display: block; margin-top: 14px; font-size: 0.78rem; color: var(--text-dim);">Android 8.0+ Supported • 100% Virus Free</span>
+    </div>
+  </div>
+
+  <!-- Global Floating Back to Top Button -->
+  <button type="button" id="backToTop" aria-label="Back to Top">↑</button>
+
+  <!-- 5. FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <img src="asset/logo.png" alt="ExamBuddy Logo" class="logo-img">
+            <span class="logo-text">Exam<span>Buddy</span></span>
+          </div>
+          <p>
+            Study Smart. Ace Exams. <br>
+            A dedicated exam companion crafted for students of Guru Ghasidas Vishwavidyalaya (GGU), Bilaspur, Chhattisgarh.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About ExamBuddy</a></li>
+            <li><a href="#features">9 Key Features</a></li>
+            <li><a href="#tools">CGPA & Attendance Tools</a></li>
+            <li><a href="#support">Support & FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Study Resources</h4>
+          <ul class="footer-links">
+            <li><a href="#feat-syllabus">CBCS Syllabus</a></li>
+            <li><a href="#feat-pyqs">GGU PYQ Papers</a></li>
+            <li><a href="#feat-notes">Topper Handouts</a></li>
+            <li><a href="#feat-notices">Official Notices</a></li>
+            <li><a href="#feat-results">Semester Results</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal & Compliance</h4>
+          <ul class="footer-links">
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+            <li><a href="app-ads.txt" target="_blank">app-ads.txt (AdMob)</a></li>
+            <li><a href="mailto:support@exambuddy.app">support@exambuddy.app</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 ExamBuddy. All rights reserved. Made for GGU Students.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <span>•</span>
+          <a href="terms.html">Terms & Conditions</a>
+          <span>•</span>
+          <a href="app-ads.txt">AdMob app-ads.txt</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="asset/script.js"></script>
+</body>
+</html>
