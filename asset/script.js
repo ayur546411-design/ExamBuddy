@@ -9,14 +9,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const backToTopBtn = document.getElementById('backToTop');
   const mobileToggle = document.getElementById('mobileToggle');
   const navLinks = document.querySelector('.nav-links');
+  const mobileStickyBar = document.getElementById('mobileStickyBar');
+  const navOverlayMask = document.getElementById('navOverlayMask');
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
+    const scrollY = window.scrollY;
+    if (scrollY > 40) {
       header?.classList.add('scrolled');
       backToTopBtn?.classList.add('visible');
     } else {
       header?.classList.remove('scrolled');
       backToTopBtn?.classList.remove('visible');
+    }
+
+    // Show sticky mobile download bar after scrolling past hero
+    if (scrollY > 350) {
+      mobileStickyBar?.classList.add('visible');
+    } else {
+      mobileStickyBar?.classList.remove('visible');
     }
   });
 
@@ -24,17 +34,22 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // Mobile Menu Toggle
-  mobileToggle?.addEventListener('click', () => {
+  // Mobile Menu Toggle & Overlay Mask
+  function toggleMobileMenu() {
     navLinks?.classList.toggle('open');
+    navOverlayMask?.classList.toggle('active');
     const isOpen = navLinks?.classList.contains('open');
-    mobileToggle.innerHTML = isOpen ? '✕' : '☰';
-  });
+    if (mobileToggle) mobileToggle.innerHTML = isOpen ? '✕' : '☰';
+  }
+
+  mobileToggle?.addEventListener('click', toggleMobileMenu);
+  navOverlayMask?.addEventListener('click', toggleMobileMenu);
 
   // Close mobile menu on link click
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
       navLinks?.classList.remove('open');
+      navOverlayMask?.classList.remove('active');
       if (mobileToggle) mobileToggle.innerHTML = '☰';
     });
   });
