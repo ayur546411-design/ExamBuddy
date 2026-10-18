@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navOverlayMask?.classList.toggle('active');
     const isOpen = navLinks?.classList.contains('open');
     if (mobileToggle) mobileToggle.innerHTML = isOpen ? '✕' : '☰';
+    mobileToggle?.setAttribute('aria-expanded', String(isOpen));
   }
 
   mobileToggle?.addEventListener('click', toggleMobileMenu);
@@ -51,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
       navLinks?.classList.remove('open');
       navOverlayMask?.classList.remove('active');
       if (mobileToggle) mobileToggle.innerHTML = '☰';
+      mobileToggle?.setAttribute('aria-expanded', 'false');
     });
   });
 
