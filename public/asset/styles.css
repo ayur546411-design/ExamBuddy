@@ -3307,6 +3307,20 @@ select.input-control option {
   font-size: 0.8rem;
 }
 
+.candidate-accept-button {
+  display: flex;
+  width: 100%;
+  min-height: 48px;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 14px;
+}
+
+.candidate-accept-button > span {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
 body.modal-open {
   overflow: hidden;
 }
