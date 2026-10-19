@@ -1,6 +1,6 @@
 /**
  * ExamBuddy — Interactive Script & Tools
- * Guru Ghasidas Vishwavidyalaya (GGU) Exam Companion
+ * Academic Resources & Student Tools
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
   navOverlayMask?.addEventListener('click', toggleMobileMenu);
 
   // Close mobile menu on link click
-  document.querySelectorAll('.nav-link').forEach(link => {
+  document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
       navLinks?.classList.remove('open');
       navOverlayMask?.classList.remove('active');
@@ -55,6 +55,68 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileToggle?.setAttribute('aria-expanded', 'false');
     });
   });
+
+  // 1a. Rotating app preview
+  const appShowcase = document.querySelector('[data-app-showcase]');
+  if (appShowcase) {
+    const appSlides = [...appShowcase.querySelectorAll('[data-app-slide]')];
+    const showcaseDots = [...appShowcase.querySelectorAll('[data-showcase-dot]')];
+    const showcaseStatus = appShowcase.querySelector('.showcase-status');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let activeSlide = 0;
+    let showcaseTimer;
+
+    function showAppSlide(index) {
+      activeSlide = (index + appSlides.length) % appSlides.length;
+      appSlides.forEach((slide, slideIndex) => {
+        const isActive = slideIndex === activeSlide;
+        slide.hidden = !isActive;
+        slide.setAttribute('aria-hidden', String(!isActive));
+      });
+      showcaseDots.forEach((dot, dotIndex) => {
+        const isActive = dotIndex === activeSlide;
+        dot.classList.toggle('is-active', isActive);
+        dot.setAttribute('aria-pressed', String(isActive));
+      });
+      if (showcaseStatus) {
+        showcaseStatus.textContent = `${String(activeSlide + 1).padStart(2, '0')} / ${String(appSlides.length).padStart(2, '0')}`;
+      }
+    }
+
+    function stopShowcaseRotation() {
+      window.clearInterval(showcaseTimer);
+      showcaseTimer = undefined;
+    }
+
+    function startShowcaseRotation() {
+      stopShowcaseRotation();
+      if (reducedMotion || document.hidden || appShowcase.matches(':hover') || appShowcase.contains(document.activeElement)) return;
+      showcaseTimer = window.setInterval(() => showAppSlide(activeSlide + 1), 5000);
+    }
+
+    appShowcase.querySelector('[data-showcase-prev]')?.addEventListener('click', () => {
+      showAppSlide(activeSlide - 1);
+      startShowcaseRotation();
+    });
+    appShowcase.querySelector('[data-showcase-next]')?.addEventListener('click', () => {
+      showAppSlide(activeSlide + 1);
+      startShowcaseRotation();
+    });
+    showcaseDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        showAppSlide(index);
+        startShowcaseRotation();
+      });
+    });
+    appShowcase.addEventListener('pointerenter', stopShowcaseRotation);
+    appShowcase.addEventListener('pointerleave', startShowcaseRotation);
+    appShowcase.addEventListener('focusin', stopShowcaseRotation);
+    appShowcase.addEventListener('focusout', event => {
+      if (!appShowcase.contains(event.relatedTarget)) startShowcaseRotation();
+    });
+    document.addEventListener('visibilitychange', startShowcaseRotation);
+    startShowcaseRotation();
+  }
 
   // 2. FAQ Accordion
   const faqItems = document.querySelectorAll('.faq-item');
@@ -85,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 3. GGU CGPA / SGPA Calculator
+  // 3. GGU CBCS CGPA / SGPA Calculator
   const gradePoints = {
     'O': 10,
     'A+': 9,
@@ -218,13 +280,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (percentage >= 75) {
       if (attBadge) {
         attBadge.className = 'att-status-badge safe';
-        attBadge.textContent = '✓ 75% Safe for GGU Exams';
+        attBadge.textContent = '✓ At or above 75% estimate';
       }
       // Calculate bunkable classes: (attended / (total + x)) >= 0.75 => x <= (attended - 0.75*total)/0.75
       const canBunk = Math.floor((attended - 0.75 * total) / 0.75);
       if (attAdvice) {
         if (canBunk > 0) {
-          attAdvice.innerHTML = `🎉 You can safely miss <strong>${canBunk}</strong> upcoming class(es) while staying above 75%.`;
+          attAdvice.innerHTML = `🎉 You can safely miss <strong>${canBunk}</strong> upcoming class(es) while staying at or above 75%.`;
         } else {
           attAdvice.innerHTML = `⚠️ Your attendance is right at the 75% edge. Do not miss any upcoming classes!`;
         }
@@ -243,6 +305,57 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   calculateAttBtn?.addEventListener('click', calculateAttendance);
+
+  // 5a. Selected Candidates Modal
+  const selectedCandidatesModal = document.getElementById('selectedCandidatesModal');
+  const openSelectedCandidatesBtn = document.getElementById('openSelectedCandidates');
+  const closeSelectedCandidatesBtn = document.getElementById('closeSelectedCandidates');
+  let selectedCandidatesTrigger;
+
+  function closeSelectedCandidatesModal() {
+    if (!selectedCandidatesModal?.classList.contains('active')) return;
+    selectedCandidatesModal.classList.remove('active');
+    selectedCandidatesModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+    selectedCandidatesTrigger?.focus();
+  }
+
+  openSelectedCandidatesBtn?.addEventListener('click', () => {
+    if (!selectedCandidatesModal) return;
+    selectedCandidatesTrigger = openSelectedCandidatesBtn;
+    selectedCandidatesModal.classList.add('active');
+    selectedCandidatesModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    window.requestAnimationFrame(() => closeSelectedCandidatesBtn?.focus());
+  });
+
+  closeSelectedCandidatesBtn?.addEventListener('click', closeSelectedCandidatesModal);
+
+  selectedCandidatesModal?.addEventListener('click', event => {
+    if (event.target === selectedCandidatesModal) closeSelectedCandidatesModal();
+  });
+
+  selectedCandidatesModal?.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closeSelectedCandidatesModal();
+      return;
+    }
+
+    if (event.key !== 'Tab') return;
+    const focusable = [...selectedCandidatesModal.querySelectorAll('button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])')];
+    if (focusable.length === 0) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
 
   // 5. Download Modal
   const downloadModal = document.getElementById('downloadModal');
@@ -270,7 +383,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const copyEmailBtns = document.querySelectorAll('.btn-copy-email');
   copyEmailBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      const email = btn.getAttribute('data-email') || 'support@exambuddy.app';
+      const email = btn.getAttribute('data-email') || 'office@exambuddy.info';
       navigator.clipboard.writeText(email).then(() => {
         showToast(`Copied ${email} to clipboard!`);
       }).catch(() => {
