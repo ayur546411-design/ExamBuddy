@@ -26,7 +26,7 @@ legend{font-weight:800;font-size:16px;padding:0 8px;color:var(--ink)}
 @media (max-width:600px){.grid{grid-template-columns:1fr}}
 .f{margin-bottom:14px}.full{grid-column:1/-1}
 label{display:block;font-weight:700;font-size:13px;margin-bottom:5px}
-input[type=text],input[type=email],input[type=tel],input[type=date],select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:10px 12px}
+input[type=text],input[type=email],input[type=tel],input[type=date],input[type=file],select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:10px 12px}
 textarea{min-height:72px;resize:vertical}
 input:focus,select:focus,textarea:focus,button:focus-visible,summary:focus-visible{outline:3px solid var(--pur);outline-offset:1px}
 .hint{font-size:12px;color:var(--mute);margin-top:4px}
@@ -35,11 +35,13 @@ input:focus,select:focus,textarea:focus,button:focus-visible,summary:focus-visib
 .ck{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;font-weight:400;font-size:14px}
 .ck input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--pur)}
 .ck.bad{color:var(--err)}
+.rules-link{color:var(--err);font-weight:800;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:2px;background:color-mix(in srgb,var(--err) 10%,transparent);border-radius:3px;padding:1px 3px}
+.rules-link:focus-visible{outline:3px solid var(--err);outline-offset:2px;border-radius:3px}
 details.terms{background:var(--lav);border-radius:10px;padding:10px 14px;margin-bottom:16px;font-size:13.5px}
 details.terms summary{cursor:pointer;font-weight:700}
 details.terms ul{margin:8px 0 2px;padding-left:18px}
-#guardian{display:none}#guardian.on{display:block}
-.sig{font-family:"Brush Script MT","Segoe Script",cursive;font-size:24px}
+.signature-preview{display:none;max-width:100%;max-height:150px;margin-top:10px;padding:8px;border:1px solid var(--line);border-radius:8px;background:#fff;object-fit:contain}
+.signature-preview.visible{display:block}
 .btn{font:inherit;font-weight:800;border:0;border-radius:10px;padding:13px 22px;cursor:pointer;background:var(--pur);color:#fff}
 @media (prefers-color-scheme:dark){.btn{color:#0A0F30}}
 .btn.alt{background:transparent;color:var(--pur);border:2px solid var(--pur)}
@@ -48,35 +50,41 @@ details.terms ul{margin:8px 0 2px;padding-left:18px}
 #done h2{margin:0 0 4px;font-size:22px;color:var(--ok)}
 dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:16px 0}
 dt{font-weight:700;color:var(--mute)}dd{margin:0;word-break:break-word}
-@media print{header .hd p,.noprint{display:none}body{background:#fff;color:#000}header{background:#0B1240!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+.print-terms{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin:18px 0}
+.print-terms h3{margin:0 0 8px}
+.print-terms ol,.print-terms ul{padding-left:22px}
+.print-terms li{margin:0 0 7px}
+.print-signature{display:block;max-width:320px;max-height:140px;margin-top:8px;object-fit:contain;object-position:left center}
+@media print{
+ @page{margin:16mm}
+ body{background:#fff;color:#000;font-size:11pt}
+ header{background:#0B1240!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ main{max-width:none;padding:16px 0}
+ #done{display:block!important}
+ #formView,.noprint{display:none!important}
+ .intro,dt{color:#333}
+ dl,.print-terms{break-inside:avoid;background:#fff;border-color:#999}
+ .print-terms li{break-inside:avoid}
+ .print-signature{max-height:100px}
+}
 </style>
 </head>
 <body>
 <header><div class="hd"><img src="data:image/jpeg;base64,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" alt="ExamBuddy logo"><div><h1>Candidate acceptance form</h1><p>Selected Candidate Terms &amp; Conditions v1.0</p></div></div></header>
 <main>
 <div id="formView">
-<p class="intro">Congratulations on your selection. Read the Terms &amp; Conditions and the Official Rules &amp; Regulations, then complete this form. Fields marked * are required.</p>
+<p class="intro">Congratulations on your selection. Read the <a href="terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a> and the <a href="rules-and-regulations.html" target="_blank" rel="noopener">Official Rules &amp; Regulations</a>, then complete this form. Fields marked * are required.</p>
 <form id="f" novalidate>
 <fieldset><legend>Your details</legend><div class="grid">
 <div class="f full"><label for="name">Full name *</label><input id="name" type="text" autocomplete="name" required><div class="err">Enter your full name.</div></div>
 <div class="f"><label for="cid">Candidate ID</label><input id="cid" type="text"><div class="hint">From your selection email, if you have one.</div></div>
-<div class="f"><label for="dob">Date of birth *</label><input id="dob" type="date" required><div class="err">Enter a valid date of birth.</div></div>
 <div class="f"><label for="email">Email *</label><input id="email" type="email" autocomplete="email" required><div class="err">Enter a valid email address.</div></div>
 <div class="f"><label for="phone">Mobile number *</label><input id="phone" type="tel" autocomplete="tel" required pattern="[0-9+ ()-]{10,15}"><div class="err">Enter a 10-digit mobile number.</div></div>
 <div class="f full"><label for="college">College / university *</label><input id="college" type="text" required><div class="err">Enter your college or university.</div></div>
 <div class="f"><label for="course">Course and year *</label><input id="course" type="text" placeholder="e.g. B.Tech CSE, 2nd year" required><div class="err">Enter your course and year.</div></div>
 <div class="f"><label for="role">Role / team selected for *</label><input id="role" type="text" required><div class="err">Enter the role you were selected for.</div></div>
-<div class="f"><label for="etype">Engagement type *</label><select id="etype" required><option value="">Choose one</option><option>Internship</option><option>Volunteer</option><option>Contributor</option></select><div class="err">Choose an engagement type.</div></div>
+<div class="f"><label for="etype">Engagement type *</label><select id="etype" required><option value="Provisional period (15 days)" selected>Provisional period (15 days)</option><option>Internship</option><option>Volunteer</option><option>Contributor</option></select><div class="err">Choose an engagement type.</div></div>
 <div class="f"><label for="start">Start date</label><input id="start" type="date"></div>
-</div></fieldset>
-
-<fieldset id="guardian"><legend>Parent / guardian consent</legend>
-<p class="hint" style="margin-top:0">Required because you are under 18. I am the parent or legal guardian, I consent to this engagement and to processing of the candidate’s personal data for it, and I agree to the Terms.</p>
-<div class="grid">
-<div class="f"><label for="gname">Guardian’s full name *</label><input id="gname" type="text"><div class="err">Enter the guardian’s name.</div></div>
-<div class="f"><label for="grel">Relationship *</label><input id="grel" type="text" placeholder="e.g. Mother"><div class="err">Enter the relationship.</div></div>
-<div class="f"><label for="gphone">Guardian’s mobile number *</label><input id="gphone" type="tel"><div class="err">Enter a 10-digit mobile number.</div></div>
-<div class="f"><label for="gsig">Guardian’s signature (type full name) *</label><input id="gsig" class="sig" type="text"><div class="err">Type the guardian’s full name to sign.</div></div>
 </div></fieldset>
 
 <fieldset><legend>Declarations</legend>
@@ -86,7 +94,7 @@ dt{font-weight:700;color:var(--mute)}dd{margin:0;word-break:break-word}
 <li>Company, source-code, credential and user information stays confidential, during and after your engagement.</li>
 <li>Either side can end the engagement with 7 days’ written notice. Serious misconduct can lead to immediate suspension.</li>
 </ul></details>
-<label class="ck"><input type="checkbox" class="dec"><span>I have received and read the ExamBuddy Selected Candidate Terms &amp; Conditions v1.0 and the Official Rules &amp; Regulations v1.0, and I understand them. *</span></label>
+<label class="ck"><input type="checkbox" class="dec"><span>I have received and read the ExamBuddy Selected Candidate Terms &amp; Conditions v1.0 and the <a class="rules-link" href="rules-and-regulations.html" target="_blank" rel="noopener">Official Rules &amp; Regulations v1.0</a>, and I understand them. *</span></label>
 <label class="ck"><input type="checkbox" class="dec"><span>All information and documents I gave during selection are true and genuine. *</span></label>
 <label class="ck"><input type="checkbox" class="dec"><span>I will keep all Company, source-code, credential and user information confidential, during and after my engagement. *</span></label>
 <label class="ck"><input type="checkbox" class="dec"><span>I agree that work I create for ExamBuddy belongs to the Company. *</span></label>
@@ -98,9 +106,9 @@ dt{font-weight:700;color:var(--mute)}dd{margin:0;word-break:break-word}
 </fieldset>
 
 <fieldset><legend>Sign</legend><div class="grid">
-<div class="f"><label for="sig">Signature (type your full name) *</label><input id="sig" class="sig" type="text" autocomplete="off" required><div class="err">Type your full name exactly as above to sign.</div></div>
+<div class="f full"><label for="sig">Upload your signature image *</label><input id="sig" type="file" accept="image/png,image/jpeg,image/webp" required><div class="hint">Upload a clear PNG, JPG, or WebP image (maximum 5 MB). The image stays on this device and is included in your printable summary.</div><div class="err" id="sigErr">Upload a valid signature image (PNG, JPG, or WebP) up to 5 MB.</div><img class="signature-preview" id="signaturePreview" alt="Signature preview"></div>
 <div class="f"><label for="place">Place *</label><input id="place" type="text" required><div class="err">Enter your place.</div></div>
-</div><p class="hint" style="margin-top:0">Typing your name here is an electronic signature and has the same effect as a handwritten one. Today’s date is added automatically.</p></fieldset>
+</div><p class="hint" style="margin-top:0">Your uploaded signature image will appear in the signed summary and print/PDF output. Today’s date is added automatically.</p></fieldset>
 <div class="row"><button class="btn" type="submit">Accept and sign</button></div>
 </form>
 </div>
@@ -109,30 +117,54 @@ dt{font-weight:700;color:var(--mute)}dd{margin:0;word-break:break-word}
 <h2>Acceptance recorded</h2>
 <p class="intro">Here is your signed summary. Save it as a PDF and send it to your ExamBuddy Team Lead. This page does not send it for you.</p>
 <dl id="sum"></dl>
+<section class="print-terms">
+<h3>Terms &amp; Conditions — Key Points</h3>
+<ol id="printTerms"></ol>
+<h3>Candidate Declarations</h3>
+<ol id="printDeclarations"></ol>
+<h3>Candidate Signature</h3>
+<img class="print-signature" id="printSignature" alt="Candidate's uploaded signature">
+</section>
 <div class="row noprint"><button class="btn" id="print" type="button">Print or save as PDF</button><button class="btn alt" id="back" type="button">Edit answers</button></div>
 </div>
 </main>
 <script>
 (function(){
 var $=function(i){return document.getElementById(i)};
-function age(v){if(!v)return null;var d=new Date(v),n=new Date(),a=n.getFullYear()-d.getFullYear(),m=n.getMonth()-d.getMonth();if(m<0||(m===0&&n.getDate()<d.getDate()))a--;return a}
-function minor(){var a=age($("dob").value);return a!==null&&a>=0&&a<18}
-$("dob").max=new Date().toISOString().slice(0,10);
-$("dob").addEventListener("input",function(){$("guardian").classList.toggle("on",minor())});
+var signatureDataUrl="";
+var signatureInput=$("sig");
+var signaturePreview=$("signaturePreview");
+signatureInput.addEventListener("change",function(){
+ var file=signatureInput.files&&signatureInput.files[0];
+ var valid=!!file&&/^image\/(png|jpeg|webp)$/.test(file.type)&&file.size<=5*1024*1024;
+ var field=signatureInput.closest(".f");
+ field.classList.toggle("bad",!valid);
+ if(!valid){signatureDataUrl="";signaturePreview.removeAttribute("src");signaturePreview.classList.remove("visible");return}
+ var reader=new FileReader();
+ reader.onload=function(){
+  var image=new Image();
+  image.onload=function(){
+   signatureDataUrl=reader.result;
+   signaturePreview.src=signatureDataUrl;
+   signaturePreview.classList.add("visible");
+   field.classList.remove("bad");
+  };
+  image.onerror=function(){signatureDataUrl="";field.classList.add("bad");signaturePreview.classList.remove("visible")};
+  image.src=reader.result;
+ };
+ reader.onerror=function(){signatureDataUrl="";field.classList.add("bad");signaturePreview.classList.remove("visible")};
+ reader.readAsDataURL(file);
+});
 function mark(el,bad){var w=el.closest(".f");if(w)w.classList.toggle("bad",bad);return bad}
 function phoneOk(v){return /^(\+91[\s-]?)?[6-9]\d{9}$/.test(v.replace(/[\s-]/g,"").replace(/^0/,""))||/^[0-9+ ()-]{10,15}$/.test(v)}
 function validate(){
- var bad=null,ids=["name","dob","email","phone","college","course","role","etype","place"];
+ var bad=null,ids=["name","email","phone","college","course","role","etype","place"];
  ids.forEach(function(i){var e=$(i),b=!e.value.trim();
   if(!b&&i==="email")b=!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e.value);
   if(!b&&i==="phone")b=!phoneOk(e.value);
-  if(!b&&i==="dob")b=age(e.value)===null||age(e.value)<0;
   if(mark(e,b)&&!bad)bad=e});
- var s=$("sig"),sb=s.value.trim().toLowerCase()!==$("name").value.trim().toLowerCase()||!s.value.trim();
- if(mark(s,sb)&&!bad)bad=s;
- if(minor()){["gname","grel","gphone","gsig"].forEach(function(i){var e=$(i),b=!e.value.trim();
-  if(!b&&i==="gphone")b=!phoneOk(e.value);
-  if(mark(e,b)&&!bad)bad=e})}
+ var signatureValid=!!signatureDataUrl;
+ if(mark(signatureInput,!signatureValid)&&!signatureValid&&!bad)bad=signatureInput;
  var all=Array.prototype.every.call(document.querySelectorAll(".dec"),function(c){return c.checked});
  document.querySelectorAll(".dec").forEach(function(c){c.closest(".ck").classList.toggle("bad",!c.checked)});
  $("decErr").style.display=all?"none":"block";
@@ -142,13 +174,19 @@ function esc(t){var d=document.createElement("div");d.textContent=t;return d.inn
 $("f").addEventListener("submit",function(e){
  e.preventDefault();var bad=validate();
  if(bad){bad.scrollIntoView({behavior:"smooth",block:"center"});bad.focus();return}
- var rows=[["Candidate",$("name").value],["Candidate ID",$("cid").value||"—"],["Date of birth",$("dob").value],["Email",$("email").value],["Mobile",$("phone").value],
+ var rows=[["Candidate",$("name").value],["Candidate ID",$("cid").value||"—"],["Email",$("email").value],["Mobile",$("phone").value],
   ["College",$("college").value],["Course and year",$("course").value],["Role / team",$("role").value],["Engagement",$("etype").value],["Start date",$("start").value||"—"],
   ["Pre-existing work",$("pre").value||"None stated"]];
- if(minor())rows.push(["Guardian",$("gname").value+" ("+$("grel").value+"), "+$("gphone").value],["Guardian signature",$("gsig").value]);
- rows.push(["Declarations","All 7 accepted"],["Signed by",$("sig").value],["Place",$("place").value],
+ rows.push(["Declarations","All 7 accepted"],["Place",$("place").value],
   ["Date",new Date().toLocaleDateString("en-IN",{day:"numeric",month:"long",year:"numeric"})],["Document","Selected Candidate T&amp;C v1.0 with Rules &amp; Regulations v1.0".replace(/&amp;/g,"&")]);
  $("sum").innerHTML=rows.map(function(r){return "<dt>"+esc(r[0])+"</dt><dd>"+esc(r[1])+"</dd>"}).join("");
+ $("printTerms").innerHTML=Array.prototype.map.call(document.querySelectorAll("details.terms li"),function(item){
+  return "<li>"+esc(item.textContent)+"</li>"
+ }).join("");
+ $("printDeclarations").innerHTML=Array.prototype.map.call(document.querySelectorAll(".dec"),function(c){
+  return "<li>"+esc(c.parentElement.querySelector("span").textContent.replace(/\s*\*$/,""))+"</li>"
+ }).join("");
+ $("printSignature").src=signatureDataUrl;
  $("formView").style.display="none";$("done").style.display="block";window.scrollTo(0,0)});
 $("print").onclick=function(){window.print()};
 $("back").onclick=function(){$("done").style.display="none";$("formView").style.display="block";window.scrollTo(0,0)};
